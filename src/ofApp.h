@@ -41,6 +41,7 @@ public:
 	ofFbo fbo1;
 	ofFbo aspectFixFb;
 	long unsigned int devID = 0, prevDevID = 0;
+	long unsigned int midiID = 0, prevMidiID = 0;
 
 	int modeValue = 0, prevModeValue = 0;
 	float mode = 0.0;

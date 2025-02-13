@@ -114,6 +114,14 @@ void ofApp::inputUpdate()
 		prevDevID = devID;
 	}
 
+	if (midiID != prevMidiID)
+	{
+		midiIn.closePort();
+		midiIn.openPort(midiID);
+		ofLog() << "midiID: " << midiID;
+		prevMidiID = midiID;
+	}
+
 	input.update();
 
 	if (input.isFrameNew())
@@ -291,6 +299,7 @@ void ofApp::midiBiz()
 //----------------------------------------------------------
 void ofApp::keyPressed(int key)
 {
+	// Here is how I map controls from the keyboard
 	if (key == ' ' || key == '0')
 	{
 		vector<ofVideoDevice> devices = input.listDevices();
@@ -303,8 +312,31 @@ void ofApp::keyPressed(int key)
 			devID = 0;
 		}
 	}
-
-	// Here is how I map controls from the keyboard
+	if (key == '9')
+	{
+		vector<string> devices;
+		devices = midiIn.getInPortList();
+		if (devices.empty())
+		{
+			cout << "no midi devices found" << endl;
+			return;
+		}
+		else
+		{
+			for (unsigned long int i = 0; i < devices.size(); i++)
+			{
+				cout << devices[i] << endl;
+			}
+			if (midiID < devices.size())
+			{
+				midiID++;
+			}
+			else
+			{
+				midiID = 0;
+			}
+		}
+	}
 
 	// fb0 x displace
 	if (key == 's')
