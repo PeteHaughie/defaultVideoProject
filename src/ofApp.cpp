@@ -49,7 +49,7 @@ void ofApp::setup()
 
 	allocateAndDeclareSundries();
 
-	shader.load("shadersES2/shader");
+	shader.load("shader");
 
 	midiSetup();
 
