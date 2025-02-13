@@ -166,7 +166,7 @@ void ofApp::draw()
 	// to print the stuff out on screen
 	ofSetColor(255);
 	string msg = "fps: " + ofToString((int)ofGetFrameRate(), 2);
-	ofDrawBitmapString(msg, 20, ofGetHeight() - 10);
+	// ofDrawBitmapString(msg, 20, ofGetHeight() - 10);
 
 	/*
 	for(int i=0;i<controlSize;i++){
